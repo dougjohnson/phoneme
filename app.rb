@@ -1,6 +1,10 @@
 require 'sinatra'
 require 'builder'
 
+get '/' do
+  "Hello"
+end
+
 post '/' do
   builder do |xml|
     xml.instruct!
