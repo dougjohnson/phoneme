@@ -6,10 +6,6 @@ get '/' do
 end
 
 post '/' do
-  builder do |xml|
-    xml.instruct!
-    xml.Response do 
-      xml.Say("Hello from my Heroku app")
-    end
-  end
+
+  logger.info 'Here is the body:' + params['plain']
 end
