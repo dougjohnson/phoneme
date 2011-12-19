@@ -9,6 +9,7 @@ post '/call-handler' do
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'Hello, Doug. You are very very gay', :voice => 'man', :language => 'en-gb'
   end
+  response
 end
 
 post '/' do
