@@ -7,5 +7,5 @@ end
 
 post '/' do
 
-  logger.info 'Here is the body:' + params['plain']
+  #logger.info 'Here is the body:' + params['plain']
 end
