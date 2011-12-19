@@ -8,7 +8,10 @@ auth_token = 'bfbb4e65cf5fb819ed53fb36ab6b80a9'
 post '/call-handler' do
   logger.info params
   response = Twilio::TwiML::Response.new do |r|
-    r.Say 'Hello, Marcus. You are very very gay', :voice => 'man', :language => 'en-gb'
+    r.Say 'Hello, Marcus. You are very very gay.', :voice => 'man', :language => 'en-gb'
+    r.Say 'No, Marcus is lovely. And I assure you he is definitely not a homosexual.', :voice => 'woman'
+    r.Say 'Who the hell are you?', :voice => 'man', :language => 'en-gb'
+    r.Say 'I am his teddy bear. Didn\'t you know I\'m a girl?', :voice => 'woman'
   end
   return response.text
 end
