@@ -9,11 +9,10 @@ post '/call-handler' do
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'Hello, Doug. You are very very gay', :voice => 'man', :language => 'en-gb'
   end
-  response
+  return response.text
 end
 
 post '/' do
-  
   if params[:plain] =~ /call doug/
     @client = Twilio::REST::Client.new account_sid, auth_token
     @call = @client.account.calls.create(
@@ -22,5 +21,4 @@ post '/' do
       :url => 'http://phoneme.heroku.com/call-handler'
     )
   end
-
 end
