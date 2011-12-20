@@ -31,3 +31,7 @@ post '/' do
     end
   end
 end
+
+get '/' do
+  "here there be dragons..."
+end
