@@ -12,7 +12,7 @@ numbers = {'+447879624700' => 'Doug',
 post '/call-handler' do
   logger.info params
   response = Twilio::TwiML::Response.new do |r|
-    r.Say 'Hello '+numbers[params['Called']]+'. The Sage One application has stopped responding. This phone call has been triggered as a result of ping dom being unable to contact the site for three consecutive minutes. Goodbye!', :voice => 'man', :language => 'en-gb'
+    r.Say 'Hello, '+numbers[params['Called']]+'. The Sage One application has stopped responding. This phone call has been triggered as a result of ping dom being unable to contact the site for three consecutive minutes. Goodbye!', :voice => 'man', :language => 'en-gb'
   end
   return response.text
 end
