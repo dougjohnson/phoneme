@@ -2,13 +2,10 @@ require 'sinatra'
 require 'builder'
 require 'twilio-ruby'
 
-account_sid = 'AC773b9ae797d841da8cf4a6d7e0e4f0fe'
-auth_token = 'bfbb4e65cf5fb819ed53fb36ab6b80a9'
-
-numbers = {'+447879624700' => 'Doug',
-           '+447977100812' => 'Marcus',
-           '+447921108564' => 'Ed',
-           '+447834417087' => 'Keith'}
+numbers = {ENV['DOUG_MOBILE'] => 'Doug',
+           ENV['MARCUS_MOBILE'] => 'Marcus',
+           ENV['ED_MOBILE'] => 'Ed',
+           ENV['KEITH_MOBILE'] => 'Keith'}
 
 
 post '/call-handler' do
@@ -22,9 +19,9 @@ end
 post '/' do
   numbers.each do |number, name|
     if params[:plain] =~ /call #{name}/i
-      @client = Twilio::REST::Client.new account_sid, auth_token
+      @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
       @call = @client.account.calls.create(
-        :from => '+447973157563',
+        :from => ENV['DOUG_MOBILE_WORK'],
         :to => number,
         :url => 'http://phoneme.heroku.com/call-handler'
       )
