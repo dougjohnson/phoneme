@@ -2,11 +2,12 @@ require 'sinatra'
 require 'builder'
 require 'twilio-ruby'
 
-numbers = {ENV['DOUG_MOBILE'] => 'Doug',
-           ENV['MARCUS_MOBILE'] => 'Marcus',
-           ENV['ED_MOBILE'] => 'Ed',
-           ENV['KEITH_MOBILE'] => 'Keith'}
-
+def numbers
+  {ENV['DOUG_MOBILE'] => 'Doug',
+   ENV['MARCUS_MOBILE'] => 'Marcus',
+   ENV['ED_MOBILE'] => 'Ed',
+   ENV['KEITH_MOBILE'] => 'Keith'}
+end
 
 post '/call-handler' do
   logger.info params
